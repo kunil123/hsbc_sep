@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function validate(){
+	
+	var v1 = document.getElementById("n1").value;
+	var v2 = document.getElementById("p1").value;
+	var v3 = document.getElementById("e1").value;
+	var v4 = document.getElementById("a1").value;
+	
+	if(v1.length==0 || v2.length==0 ||v3.length==0 ||v4.length==0 ){
+		
+		alert("Fill all the fields")
+	}
+	
+}
+
+function generateCaptcha(){
+	var v=parseInt((Math.random())*10000);
+	document.getElementById("result").innerHTML="<input type=text id=nb value="+v+"><input type=button value=refresh onClick=generateCaptcha()><br> enter above no<input type=text id=cc1><input type=button value=validate onclick=captchavalidate()>";
+}
+
+function captchavalidate(){
+	var v1=document.getElementById("nb").value;
+	var v2=document.getElementById("cc1").value;
+	if(v1==v2){
+		document.getElementById("bb").disabled=false;
+	}
+}
+</script>
+</head>
+<body>
+
+<p align="center">Registration Page</p>
+<form >
+NAME:    <input type = text name=name id=n1><br>
+PASSWORD:<input type = password name=password id=p1><br>
+EMAIL:   <input type = email name=email id=e1><br>
+ADDRESS: <input type = text name=address id=a1 onblur="generateCaptcha()"><br>
+<div id="result"></div>
+ <input  type = submit id=bb value=Register onclick="validate()" disabled><br>
+
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function validate(){
+	var n = document.getElementById("nn").value;
+	if(n.length<10 || n.length>10){
+		alert("Enter a valid number")
+	}
+	
+	
+}
+
+function validatepass(){
+	
+	
+	var p = document.getElementById("n2").value
+	if(p.length>=4 && p.length<=6)
+		{
+		
+		document.getElementById("demo").innerHTML="<font color=red>weak</font>"
+		}
+	if(p.length>=6 && p.length<=8)
+	{
+	
+	document.getElementById("demo").innerHTML="<font color=yellow>medium</font>"
+	}
+	
+	if(p.length>=8 && p.length<=10)
+	{
+	
+	document.getElementById("demo").innerHTML="<font color=green>strong</font>"
+	}
+}
+
+
+function generateCaptcha(){
+	var v=parseInt((Math.random())*10000);
+	document.getElementById("result").innerHTML="<input type=text id=nb value="+v+"><input type=button value=refresh onClick=generateCaptcha()><br> enter above no<input type=text id=cc1><input type=button value=validate onclick=captchavalidate()>";
+}
+
+function captchavalidate(){
+	var v1=document.getElementById("nb").value;
+	var v2=document.getElementById("cc1").value;
+	if(v1==v2){
+		document.getElementById("bb").disabled=false;
+	}
+}
+
+
+function random_function()
+{
+    var a=document.getElementById("input").value;
+    if(a==="INDIA")
+    {
+        var arr=["Maharashtra","Delhi"];
+    }
+    else if(a==="USA")
+    {
+        var arr=["Washington","Texas","New York"];
+    }
+ 
+    var string="";
+ 
+    for(i=0;i<arr.length;i++)
+    {
+        string=string+"<option>"+arr[i]+"</option>";
+    }
+    document.getElementById("output").innerHTML=string;
+}
+
+</script>
+	<p align="center">Registration Page</p>
+	
+	<form action="RegistrationServlet">
+		Name     : <input type=text name=name id="n1" required pattern="[^0-9][a-zA-Z]*"> <br>
+		Number   : <input type=number name=number id="nn" required> <br>
+		Pass : <input type=password name=password id="n2" required  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,12}$" onkeyup="validatepass()"> 
+		           <p id="demo"></p>
+		Email    : <input type=email name=email id="n3" required> <br>
+		Address  : <input type=text name=address id="n4" required onblur="generateCaptcha()"> <br>
+		           <p id="result"></p>
+		           <input type=submit value=Register id=bb  onclick="validate()" disabled> <br>
+	
+	
+	
+	
+	</form>
+	
+	  <select id="input" onchange="random_function()">
+            <option>select option</option>
+            <option>INDIA</option>
+            <option>USA</option>
+        </select>
+        <div>
+           <select id="output" >
+        </div>
+	
+</body>
+</html>

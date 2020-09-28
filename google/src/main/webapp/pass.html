@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function validate(){
+	
+	
+	var p = document.getElementById("n2").value
+	if(p.length>=4 && p.length<=6)
+		{
+		
+		document.getElementById("demo").innerHTML="weak"
+		}
+}
+
+
+</script>
+	<p align="center">Registration Page</p>
+	
+	<form >
+		
+		Password : <input type=password name=password id="n2" required  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,8}$" onBlur="validate()"> 
+		<p id="demo"></p>
+		
+	
+	
+	
+	
+	</form>
+	
+</body>
+</html>
